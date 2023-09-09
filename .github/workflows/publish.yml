@@ -28,7 +28,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build site
-        run: ./site.hs build
+        run: |
+          cabal update
+          ./site.hs build
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v2
