@@ -1,0 +1,16 @@
+---
+title: Blog
+---
+
+<h1>Blog</h1>
+
+<ul id="post-list">
+  $for(posts)$
+    <li>
+      <a href="$url$">
+        <span class="post-title">$title$</span>
+        <span class="post-date">$date$</span>
+      </a>
+    </li>
+  $endfor$
+</ul>

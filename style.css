@@ -1,0 +1,81 @@
+body {
+  color: #FEFAF5;
+  background-color: #08090D;
+  font-family: "Fira Mono", monospace;
+  margin: auto;
+  padding: 10px;
+  max-width: 900px;
+}
+
+a {
+  color: #1A97F7;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+#logo {
+  text-align: center;
+}
+
+#logo a {
+  color: #FEFAF5;
+  text-decoration: none;
+  font-size: 20pt;
+}
+
+#navigation {
+  margin-left: 40px;
+  margin-bottom: -12px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#navigation a {
+  background-color: #08090D;
+  color: #FEFAF5;
+  text-decoration: none;
+  padding: 0px 12px;
+}
+
+#content {
+  border: 1px solid #FEFAF5;
+  padding: 12px;
+}
+
+#post-list {
+  list-style-type: none;
+  padding: 0 8px;
+}
+
+#post-list a {
+  color: #FEFAF5;
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#post-list a:hover {
+  background-color: #115487
+}
+
+#footer {
+  text-align: right;
+  margin-right: 40px;
+  margin-top: -12px;
+}
+
+#footer span {
+  background-color: #08090D;
+  padding: 0px 12px;
+}
