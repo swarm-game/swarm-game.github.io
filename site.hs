@@ -8,21 +8,18 @@ build-depends:
 -}
 {-# LANGUAGE OverloadedStrings #-}
 
+import Data.String (String)
 import Hakyll
 import System.FilePath (dropExtension, takeDirectory, takeFileName, (</>))
 
 main :: IO ()
 main = hakyll $ do
-  match "images/**" $ do
-    route idRoute
-    compile copyFileCompiler
-
-  match "style.css" $ do
+  match ("images/**" .||. "gallery/**" .||. "style.css") $ do
     route idRoute
     compile copyFileCompiler
 
   match "blog/**" $ do
-    route $ cleanRoute
+    route cleanRoute
     compile $
       pandocCompiler
         >>= loadAndApplyTemplate "templates/post.html" blogPostContext
@@ -47,6 +44,13 @@ main = hakyll $ do
         >>= applyAsTemplate blogListContext
         >>= loadAndApplyTemplate "templates/default.html" defaultContext
 
+  match "gallery.html" $ do
+    route cleanRoute
+    compile $
+      getResourceBody
+        >>= applyAsTemplate galleryContext
+        >>= loadAndApplyTemplate "templates/default.html" defaultContext
+
   match "templates/*" $ compile templateBodyCompiler
 
 cleanRoute :: Routes
@@ -65,4 +69,9 @@ blogPostContext =
 blogListContext :: Context String
 blogListContext =
   listField "posts" blogPostContext (recentFirst =<< loadAll "blog/*")
+    <> defaultContext
+
+galleryContext :: Context String
+galleryContext =
+  listField "images" defaultContext (loadAll "gallery/*")
     <> defaultContext
