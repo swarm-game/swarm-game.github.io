@@ -8,9 +8,10 @@ build-depends:
 -}
 {-# LANGUAGE OverloadedStrings #-}
 
-import Data.String (String)
-import Hakyll
-import System.FilePath (dropExtension, takeDirectory, takeFileName, (</>))
+import           Data.String     (String)
+import           Hakyll
+import           System.FilePath (dropExtension, takeDirectory, takeFileName,
+                                  (</>))
 
 main :: IO ()
 main = hakyll $ do
