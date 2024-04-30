@@ -5,14 +5,6 @@ title: Installing
 Installing
 ==========
 
-**NOTE**: Compiling Swarm with GHC 9.2.5 and optimizations enabled
-seems to result in very long freezes/delays (tens of seconds) when
-starting Swarm (see
-[#1000](https://github.com/swarm-game/swarm/issues/1000)).  We
-recommend either building Swarm with a different version of GHC
-(*e.g.* 9.4.x), or building with optimizations turned off (which does
-not seem to affect the game performance very much).
-
 **NOTE**: Swarm requires a POSIX-style terminal environment that
 supports `terminfo`.  Linux and MacOS should work out of the box.  On
 Windows, you will need to use [Windows Subsystem for
@@ -75,28 +67,9 @@ Installing from source
 ----------------------
 
 If you want the latest unreleased bleeding-edge features, or want to
-contribute to Swarm development, you can build from source.
-
-1. Clone the Swarm repository, e.g.
-
-       git clone https://github.com/swarm-game/swarm.git
-
-1. If you don't already have the `stack` tool:
-    1. Get the [`ghcup` tool](https://www.haskell.org/ghcup/), a handy
-       one-stop utility for managing all the different pieces of a
-       Haskell toolchain.
-    1. Use `ghcup` to install `stack`:
-
-           ghcup install stack
-
-1. Now use `stack` to build and run Swarm:
-
-       cd /path/to/the/swarm/repo
-       stack run
-
-1. Go get a snack while `stack` downloads a Haskell compiler and
-   all of Swarm's dependencies.
-
+contribute to Swarm development, [head over to the Swarm repository on
+GitHub](https://github.com/swarm-game/swarm/#readme) for instructions
+on building from source.
 
 Configuring your editor
 =======================
@@ -104,11 +77,13 @@ Configuring your editor
 Although you can write commands and definitions directly in the Swarm
 REPL, once you get beyond the basics you'll probably want to use an
 external editor for writing Swarm programs.  Swarm has support for
-external editors with highlighting and LSP integration:
+external editors with syntax highlighting and LSP integration:
 
 ![Editor with problem popup](/images/editor.png)
 
 See the [`editors`
 folder](https://github.com/swarm-game/swarm/tree/main/editors) for
-details on how to configure your editor.  Currently, emacs and VS Code
-are officially supported, but more can be added.
+details on how to configure your editor.  Currently, VS Code, Emacs,
+and Vim/Neovim are officially supported, but more may be added in the
+future.  [See this PR](https://github.com/swarm-game/swarm/pull/1518)
+for an example of the process of adding support for a new editor.
