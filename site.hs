@@ -2,9 +2,9 @@
 
 {- cabal:
 build-depends:
-  base ^>= 4.18.0.0,
+  base >= 4.18 && < 4.20,
   filepath ^>= 1.4.100.1,
-  hakyll ^>= 4.16.1.0,
+  hakyll >= 4.16 && < 4.17,
 -}
 {-# LANGUAGE OverloadedStrings #-}
 
@@ -46,10 +46,16 @@ main = hakyll $ do
 
   match "gallery.html" $ do
     route cleanRoute
-    compile $
-      getResourceBody
-        >>= applyAsTemplate galleryContext
-        >>= loadAndApplyTemplate "templates/default.html" defaultContext
+    compile $ do
+      images <- loadAll "gallery/*.png"
+      imgTpl <- loadBody "templates/gallery-image.html"
+      imgs <- applyTemplateList imgTpl defaultContext images
+
+      let galleryCtx = constField "images" imgs <> defaultContext
+
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/gallery.html" galleryCtx
+        >>= loadAndApplyTemplate "templates/default.html" galleryCtx
 
   match "templates/*" $ compile templateBodyCompiler
 
@@ -69,9 +75,4 @@ blogPostContext =
 blogListContext :: Context String
 blogListContext =
   listField "posts" blogPostContext (recentFirst =<< loadAll "blog/*")
-    <> defaultContext
-
-galleryContext :: Context String
-galleryContext =
-  listField "images" defaultContext (loadAll "gallery/*")
     <> defaultContext
