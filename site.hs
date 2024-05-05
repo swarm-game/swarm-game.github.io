@@ -2,27 +2,24 @@
 
 {- cabal:
 build-depends:
-  base ^>= 4.18.0.0,
+  base >= 4.18 && < 4.20,
   filepath ^>= 1.4.100.1,
-  hakyll ^>= 4.16.1.0,
+  hakyll >= 4.16 && < 4.17,
 -}
 {-# LANGUAGE OverloadedStrings #-}
 
+import Data.String (String)
 import Hakyll
 import System.FilePath (dropExtension, takeDirectory, takeFileName, (</>))
 
 main :: IO ()
 main = hakyll $ do
-  match "images/**" $ do
-    route idRoute
-    compile copyFileCompiler
-
-  match "style.css" $ do
+  match ("images/**" .||. "gallery/**" .||. "style.css") $ do
     route idRoute
     compile copyFileCompiler
 
   match "blog/**" $ do
-    route $ cleanRoute
+    route cleanRoute
     compile $
       pandocCompiler
         >>= loadAndApplyTemplate "templates/post.html" blogPostContext
@@ -46,6 +43,27 @@ main = hakyll $ do
       getResourceBody
         >>= applyAsTemplate blogListContext
         >>= loadAndApplyTemplate "templates/default.html" defaultContext
+
+  create ["gallery.html"] $ do
+    route cleanRoute
+    compile $ do
+      images <- loadAll "gallery/*.png"
+      imgTpl <- loadBody "templates/gallery-image.html"
+
+      -- See https://github.com/jaspervdj/hakyll/issues/717
+      -- and example in https://github.com/goolord/skyespace/blob/master/src/Main.hs
+      let imgCtx :: Context CopyFile
+          imgCtx = metadataField <> urlField "url"
+      imgs <- applyTemplateList imgTpl imgCtx images
+
+      let galleryCtx =
+            constField "images" imgs
+              <> constField "title" "Gallery"
+              <> defaultContext
+
+      makeItem ""
+        >>= loadAndApplyTemplate "templates/gallery.html" galleryCtx
+        >>= loadAndApplyTemplate "templates/default.html" galleryCtx
 
   match "templates/*" $ compile templateBodyCompiler
 
