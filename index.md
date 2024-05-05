@@ -45,7 +45,7 @@ page for ways to connect with others in the community.
 If you want to contribute, you're most welcome!  There are many ways
 to contribute, regardless of your Haskell expertise.  For example,
 even someone with no Haskell experience whatsoever could still help
-with *e.g.* game design, playtesting, and creating challenges and
+with game design, playtesting, and creating challenges and
 scenarios.  Check out
 [CONTRIBUTING](https://github.com/swarm-game/swarm/blob/main/CONTRIBUTING.md)
 for more specific information about ways to contribute.
