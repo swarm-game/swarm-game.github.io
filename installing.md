@@ -5,17 +5,12 @@ title: Installing
 Installing
 ==========
 
-**NOTE**: Swarm requires a POSIX-style terminal environment that
-supports `terminfo`.  Linux and MacOS should work out of the box.  On
-Windows, you will need to use [Windows Subsystem for
-Linux](https://learn.microsoft.com/en-us/windows/wsl/); you should
-then be able to follow instructions for installing on Linux.
-
-It is recommended that you use a relatively large terminal window
-(*e.g.* 170 columns x 40 rows or larger).  To find out the size of
-your terminal, you can type `stty size` at a command prompt. If it's
-not big enough, try decreasing the font size. You can read about
-and/or share recommended terminal settings in [this GitHub
+Swarm supports Linux, Mac OS, and Windows.  It is recommended that you
+use a relatively large terminal window, *e.g.* 170 columns x 40 rows
+or larger.  (To find out the size of your terminal on a POSIX system,
+you can type `stty size` at a command prompt.) If it's not big enough,
+try decreasing the font size. You can read about and/or share
+recommended terminal settings in [this GitHub
 issue](https://github.com/swarm-game/swarm/issues/447).
 
 - [Installing via binaries](#installing-via-binaries)
@@ -38,7 +33,7 @@ chmod +x ./swarm          # make it executable
 echo $PATH | tr ':' '\n'  # choose one of the listed directories
 mv ./swarm /my/chosen/bin/directory/
 ```
-You will also need to extract the data to your local Swarm folder so
+You will also need to extract the data directory to a local Swarm folder so
 the executable can find it:
 ```bash
 mkdir -p ~/.local/share/swarm/
@@ -53,6 +48,10 @@ Hackage](https://hackage.haskell.org/package/swarm), you should be
 able to install with
 
     cabal install swarm
+
+Currently Swarm supports GHC 9.2, 9.4, or 9.6 (GHC 9.8 support should
+be coming soon; it's possible that it already supports 9.8 but we
+forgot to update this message).
 
 If you don't already have the `cabal` tool, first [install
 `ghcup`](https://www.haskell.org/ghcup/), then run `ghcup install
