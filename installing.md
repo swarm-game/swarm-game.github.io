@@ -49,9 +49,7 @@ able to install with
 
     cabal install swarm
 
-Currently Swarm supports GHC 9.2, 9.4, or 9.6 (GHC 9.8 support should
-be coming soon; it's possible that it already supports 9.8 but we
-forgot to update this message).
+Currently Swarm builds with GHC 9.2 through 9.8.
 
 If you don't already have the `cabal` tool, first [install
 `ghcup`](https://www.haskell.org/ghcup/), then run `ghcup install
