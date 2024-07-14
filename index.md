@@ -9,8 +9,7 @@ Swarm is a terminal-based 2D programming and resource gathering
 game. Program your robots to explore the world and collect resources,
 which in turn allows you to build upgraded robots that can run more
 interesting and complex programs.  Check out the [installation
-instructions](/installing), join the [IRC
-channel](https://github.com/swarm-game/swarm/blob/main/COMMUNITY.md),
+instructions](/installing), join the [Discord server](https://github.com/swarm-game/swarm/blob/main/COMMUNITY.md),
 take a look at the [wiki](https://github.com/swarm-game/swarm/wiki),
 or [see how you can
 contribute](https://github.com/swarm-game/swarm/blob/main/CONTRIBUTING.md)!
