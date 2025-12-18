@@ -2,7 +2,7 @@
 
 {- cabal:
 build-depends:
-  base >= 4.18 && < 4.20,
+  base >= 4.18 && < 4.22,
   filepath ^>= 1.4.100.1,
   hakyll >= 4.16 && < 4.17,
 -}
