@@ -20,9 +20,9 @@ issue](https://github.com/swarm-game/swarm/issues/447).
 Installing via binaries
 -----------------------
 
-Currently we have one binary release built on [Ubuntu Bionic](https://github.com/docker-library/buildpack-deps/blob/98a5ab81d47a106c458cdf90733df0ee8beea06c/ubuntu/bionic/Dockerfile); it
-will probably work on any GNU/Linux.  We hope to add MacOS binaries in the
-near future.
+Currently we have binary releases for x86 Linux (based on [Ubuntu 24.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md); it
+will probably work on any GNU/Linux), MacOS x86, and MacOS ARM.  We
+[hope to add a Windows binary release](https://github.com/swarm-game/swarm/issues/2667) at some point in the future.
 
 You can download the `swarm` binary and compressed data directory from
 the [latest release](https://github.com/swarm-game/swarm/releases). If
@@ -33,12 +33,17 @@ chmod +x ./swarm          # make it executable
 echo $PATH | tr ':' '\n'  # choose one of the listed directories
 mv ./swarm /my/chosen/bin/directory/
 ```
-You will also need to extract the data directory to a local Swarm folder so
-the executable can find it:
+You will also need to extract the `data` directory to a local Swarm folder so
+the executable can find it, for example:
 ```bash
 mkdir -p ~/.local/share/swarm/
 unzip swarm-data.zip -d ~/.local/share/swarm
 ```
+Note that Swarm expects to find the data files in a subfolder called
+`data`, *i.e.*  `~/.local/share/swarm/data/`.  More generally, it will
+look wherever you have configured the location of your [XDG data
+directory](https://specifications.freedesktop.org/basedir/latest/),
+*i.e.* `$XDG_DATA_HOME/swarm/data/`.
 
 Installing from Hackage
 -----------------------
